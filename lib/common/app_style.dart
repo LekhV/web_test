@@ -4,4 +4,5 @@ class AppStyle {
   static const darkBlue = const Color(0xFF144A7C);
   static const mediumBlue = const Color(0xFF2D6DA9);
   static const lightTextColor = const Color(0xFFF0EFEF);
+  static const mediumTextColor = Color.fromARGB(255, 119, 118, 118);
 }

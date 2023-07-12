@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:task_list_app/common/app_style.dart';
+import 'package:task_list_app/utils/localizations_extension.dart';
 
-class AppNavigationBar extends StatelessWidget {
+import 'scopes/app_router.dart';
+
+class AppNavigationBar extends StatefulWidget {
   const AppNavigationBar({Key? key}) : super(key: key);
 
+  @override
+  State<AppNavigationBar> createState() => _AppNavigationBarState();
+}
+
+class _AppNavigationBarState extends State<AppNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
@@ -34,29 +43,54 @@ class _NavigationBarListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Text(
-        item.name,
-        style: TextStyle(
-          color: AppStyle.lightTextColor,
-          fontSize: 18,
+    return GestureDetector(
+      onTap: () {
+        item.url == AppRouteKeys.tasksPageUrl
+            ? context.goNamed(
+                '${item.url}',
+                pathParameters: {'id': '1'},
+              )
+            : context.goNamed('${item.url}');
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Text(
+          item.name.title(context),
+          style: TextStyle(
+            color: AppStyle.lightTextColor,
+            fontSize: 18,
+          ),
         ),
       ),
     );
   }
 }
 
+enum NavigationBarLabel { tasks, projects, teams, language }
+
 final navigationBarItems = [
   // TODO: labels should be in app localization file
-  NavigationBarItem(name: 'Tasks', url: 'tasks'),
-  NavigationBarItem(name: 'Projects', url: 'projects'),
-  NavigationBarItem(name: 'Teams', url: 'teams'),
+  NavigationBarItem(
+    name: NavigationBarLabel.tasks,
+    url: AppRouteKeys.tasksPageUrl,
+  ),
+  NavigationBarItem(
+    name: NavigationBarLabel.projects,
+    url: AppRouteKeys.projectsPageUrl,
+  ),
+  NavigationBarItem(
+    name: NavigationBarLabel.teams,
+    url: AppRouteKeys.teamsPageUrl,
+  ),
+  NavigationBarItem(
+    name: NavigationBarLabel.language,
+    url: AppRouteKeys.languagePageUrl,
+  ),
 ];
 
 class NavigationBarItem {
-  final String name;
+  final NavigationBarLabel name;
   final String url;
 
   NavigationBarItem({required this.name, required this.url});
