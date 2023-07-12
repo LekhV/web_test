@@ -1,0 +1,27 @@
+{
+  "tasks": "مهام",
+  "@tasks": {
+    "tasks": "مهام"
+  },
+
+  "projects": "المشاريع",
+  "@projects": {
+    "projects": "المشاريع"
+  },
+
+  "teams": "فرق",
+  "@teams": {
+    "teams": "فرق"
+  },
+  
+  "language": "لغة",
+  "@language": {
+    "language": "لغة"
+  },
+
+  "change_language": "تغيير اللغة",
+  "@change_language": {
+    "change_language": "تغيير اللغة"
+  }
+
+}

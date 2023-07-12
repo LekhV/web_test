@@ -1,0 +1,27 @@
+{
+  "tasks": "Tasks",
+  "@tasks": {
+    "tasks": "Tasks"
+  },
+
+  "projects": "Projects",
+  "@projects": {
+    "projects": "Projects"
+  },
+
+  "teams": "Teams",
+  "@teams": {
+    "teams": "Teams"
+  },
+
+  "language": "Language",
+  "@language": {
+    "language": "Language"
+  },
+
+  "change_language": "Change the language",
+  "@change_language": {
+    "change_language": "Change the language"
+  }
+
+}
